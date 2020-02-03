@@ -49,7 +49,7 @@ include/divisible/*
 
 build/**/*
 
-include/*
-lib/*
-bin/*
+#include/*
+#lib/*
+#bin/*
 test/test_runner
