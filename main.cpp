@@ -150,14 +150,12 @@ void view(const pcl::PointCloud<pcl::PointXYZ>::Ptr& pointcloud)
 
 int main()
 {
-
     // Device Serial goes here
     std::string device_serial {"006824161547"};
 
     // Initialize Point Cloud and Point
     pcl::PointCloud<pcl::PointXYZ>::Ptr pc (new pcl::PointCloud<pcl::PointXYZ>);
     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud {nullptr};
-
     pc->height = 424;
     pc->width = 512;
     pc->is_dense = true;
@@ -168,7 +166,6 @@ int main()
 
     stream_worker.join();
     viz_worker.join();
-
 
     return 0;
 }
