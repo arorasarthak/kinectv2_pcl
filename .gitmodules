@@ -1,4 +1,3 @@
-[submodule "googletest"]
-  path = lib/googletest
-  url = https://github.com/OpenKinect/libfreenect2.git
-  branch = master
+[submodule "libfreenect2"]
+	path = libfreenect2
+	url = https://github.com/OpenKinect/libfreenect2.git
