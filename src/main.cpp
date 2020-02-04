@@ -45,7 +45,12 @@ void stream(std::string ser, pcl::PointCloud<pcl::PointXYZ>::Ptr pointcloud) {
     pipeline = new libfreenect2::CudaPacketPipeline(deviceId);
 
     // Detects and Lists Devices (DO NOT REMOVE!!)
-    freenect2.enumerateDevices();
+    auto devices = freenect2.enumerateDevices();
+    std::cerr << devices << '\n';
+    for (int d {0}; d <= devices; ++d){
+        std::cerr << freenect2.getDeviceSerialNumber(d) << '\n';
+    }
+
     dev = freenect2.openDevice(serial, pipeline);
 
     // Setup Frame Listeners Here
@@ -148,10 +153,12 @@ void view(const pcl::PointCloud<pcl::PointXYZ>::Ptr& pointcloud)
 }
 
 
-int main()
+int main(int argc, char* argv[])
 {
     // Device Serial goes here
-    std::string device_serial {"006824161547"};
+    auto device_serial {static_cast<std::string>(argv[1])};
+    //std::string device_serial {"006824161547"};
+    //std::string device_serial2 {"006407462747"};
 
     // Initialize Point Cloud and Point
     pcl::PointCloud<pcl::PointXYZ>::Ptr pc (new pcl::PointCloud<pcl::PointXYZ>);
@@ -163,7 +170,6 @@ int main()
     // Start threads here
     std::thread stream_worker(stream, device_serial, pc);
     std::thread viz_worker(view, pc);
-
     stream_worker.join();
     viz_worker.join();
 
