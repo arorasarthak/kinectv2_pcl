@@ -6,6 +6,9 @@ Repo for Multi Kinect v2 Setup
 - PCL 1.8 or 1.9
 - CUDA => https://support.system76.com/articles/cuda/
 - cudnn
+    $ sudo apt install system76-cudnn-latest
+    $ sudo apt install system76-cudnn-10.1
+
 
 ## TODO List
 - [x] Interface single Kinect v2 with libfreekinect2.
