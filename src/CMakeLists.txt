@@ -4,6 +4,7 @@ project(kinect2)
 set(CMAKE_CXX_STANDARD 17)
 
 find_package(Threads REQUIRED)
+find_package(catkin REQUIRED)
 
 # ADD Libfreenect2
 set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} $ENV{HOME}/freenect2/lib/cmake/freenect2)
@@ -17,7 +18,7 @@ include_directories(${PCL_INCLUDE_DIRS})
 link_directories(${PCL_LIBRARY_DIRS})
 
 
-add_executable(kinect_test main.cpp)
+add_executable(kinect_test main.cpp grabber.cpp viewer.cpp pointcloudbuffer.cpp)
 target_link_libraries(kinect_test ${freenect2_LIBRARIES} ${PCL_LIBRARIES} Threads::Threads)
 
 install(TARGETS kinect_test DESTINATION ${PROJECT_INSTALL_BIN_DIR})
